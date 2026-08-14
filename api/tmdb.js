@@ -8,16 +8,7 @@ export default async function handler(request, response) {
         });
       }
   
-      const pathString = Array.isArray(path) ? path.join("/") : path;
-  
-      const queryParams = new URLSearchParams(request.query);
-      queryParams.delete("path");
-  
-      const queryString = queryParams.toString();
-  
-      const tmdbUrl = `https://api.themoviedb.org/3/${pathString}${
-        queryString ? `?${queryString}` : ""
-      }`;
+      const tmdbUrl = `https://api.themoviedb.org/3/${path}`;
   
       const tmdbResponse = await fetch(tmdbUrl, {
         headers: {
